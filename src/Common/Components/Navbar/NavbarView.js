@@ -7,7 +7,7 @@ const NavbarView = () => {
             <a className="brandName">LOGO</a>
             <ul>
                 <li><NavLink to="/">Home</NavLink></li>
-                <li><NavLink to="/createList">Create Post</NavLink></li>
+                <li><NavLink to="/createList">Create Todo</NavLink></li>
             </ul>
         </div>
     )

@@ -30,7 +30,7 @@ const ListDetailsView = ({ list, completeTask, handleDND, redirectHome }) => {
                     {(provided) => (
                         <ul {...provided.droppableProps} ref={provided.innerRef} className="taskContainer">
                             {
-                                list.taskDetails.map((task, id) => {
+                                list.taskDetails && list.taskDetails.map((task, id) => {
                                     return (
                                         <Draggable
                                             key={task.index}

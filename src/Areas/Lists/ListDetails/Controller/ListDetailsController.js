@@ -17,7 +17,7 @@ const ListDetailsController = () => {
 
     const listToRender = Object.assign({}, list[0])
 
-    listToRender.taskDetails.map((task, id) => {
+    listToRender.taskDetails && listToRender.taskDetails.map((task, id) => {
         let givenDate1 = new Date(task.dueDate)
         let diff = new Date().getTime() - givenDate1.getTime();
         const days = diff / (24 * 60 * 60 * 1000);
@@ -34,7 +34,7 @@ const ListDetailsController = () => {
     })
 
     if (!listToRender.isDND) {
-        listToRender.taskDetails.sort((a, b) => {
+        listToRender.taskDetails && listToRender.taskDetails.sort((a, b) => {
             return new Date(a.dueDate) - new Date(b.dueDate);
         })
     }
