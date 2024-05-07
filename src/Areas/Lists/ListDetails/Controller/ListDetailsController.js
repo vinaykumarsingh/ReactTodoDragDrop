@@ -56,9 +56,14 @@ const ListDetailsController = () => {
         let path = `/`;
         navigate(path);
     }
+    const redirectCreateTodoPage = () => {
+        let path = `/createList`;
+        navigate(path);
+    }
+
 
     return (
-        <ListDetailsView list={listToRender} completeTask={handleCompleteTask} handleDND={handleDragDrop} redirectHome={redirectHomePage} />
+        <ListDetailsView list={listToRender} completeTask={handleCompleteTask} handleDND={handleDragDrop} redirectHome={redirectHomePage} redirectCreateTodo={redirectCreateTodoPage} />
     )
 }
 export default ListDetailsController

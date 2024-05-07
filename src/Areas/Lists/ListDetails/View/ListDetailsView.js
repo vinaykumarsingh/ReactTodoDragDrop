@@ -2,7 +2,7 @@ import React from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 
-const ListDetailsView = ({ list, completeTask, handleDND, redirectHome }) => {
+const ListDetailsView = ({ list, completeTask, handleDND, redirectHome, redirectCreateTodo }) => {
     const itemToRender =
         <div className="listDetailContainer">
             <div className="listTitleContainer">
@@ -30,7 +30,7 @@ const ListDetailsView = ({ list, completeTask, handleDND, redirectHome }) => {
                     {(provided) => (
                         <ul {...provided.droppableProps} ref={provided.innerRef} className="taskContainer">
                             {
-                                list.taskDetails && list.taskDetails.map((task, id) => {
+                                list.taskDetails ? list.taskDetails.map((task, id) => {
                                     return (
                                         <Draggable
                                             key={task.index}
@@ -68,7 +68,11 @@ const ListDetailsView = ({ list, completeTask, handleDND, redirectHome }) => {
                                             )}
                                         </Draggable>
                                     )
-                                })}
+                                })
+                                :
+                                <div className="emptyWarningMessage"><h5>Nothing in your Todo List, Please add some todos.</h5>
+                                <span>You can Drag-Drop your todos as per your priority</span></div>
+                            }
                             {provided.placeholder}
 
                         </ul>
@@ -82,6 +86,9 @@ const ListDetailsView = ({ list, completeTask, handleDND, redirectHome }) => {
     return (
         <React.Fragment>
             {itemToRender}
+            <button style={{marginRight: "20px"}} className="btn btn-primary" onClick={() => redirectCreateTodo()}>
+                Create Todo
+            </button>
             <button className="btn btn-primary" onClick={() => redirectHome()}>
                 Home
             </button>
